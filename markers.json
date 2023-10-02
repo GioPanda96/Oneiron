@@ -20,7 +20,7 @@
   {
     "lat": 3876,
     "lng": 3184,
-    "info": "#Lak'Shasar",
+    "info": "# Lak'Shasar\n\nCapitale del **Califfato di Khaleb**, e casa per la sua regina, **Malika**, Lak'Shasar è una città estremamente misteriosa, in quanto pressoché **irraggiungibile senza una guida locale**. La precisa locazione della città è infatti **segreta, nel gigantesco deserto** in cui è immersa.\n\nDa Lak'Shasar, la Regina e Gran Califfo Malika regna con **regime totalitario**.",
     "type": "Capital"
   },
   {
@@ -40,5 +40,17 @@
     "lng": 4742,
     "info": "## Porto Asciutto\n\nUna piccola ma fondamentale **città portuale** nella *Provincia di Dzestra*.",
     "type": "City"
+  },
+  {
+    "lat": 1974,
+    "lng": 4264,
+    "info": "### Derry\n\nPiccola ma viva cittadina sull'isola al largo di Dzestra, Derry fa il suo successo con la **gestione dei dazi** in ingresso a Dzestra dalle regioni del nord.\n\nIn origine un **paese di pescatori**, Derry si è arricchita con le **tasse sul commercio** di metalli e gemme preziose che passano dal **Canale di Dzestra** da Araksas per arrivare alla capitale.",
+    "type": "Town"
+  },
+  {
+    "lat": 2134,
+    "lng": 5262,
+    "info": "#### Orvo\n\nVillaggio sulle rive settentrionali dell'**Occhio Destro di Oneiron**.",
+    "type": "Village"
   }
 ]
