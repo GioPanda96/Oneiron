@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marker Placement Tool</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        .marker {
+            background-color: rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map" style="height: 80vh; width: 100vw;"></div>
+    <button id="exportBtn">Export Markers</button>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map', {
+            crs: L.CRS.Simple,
+            minZoom: -5,
+        });
+
+        var bounds = [[0, 0], [6144, 8192]];
+        L.imageOverlay('Oneiron.jpg', bounds).addTo(map);
+        map.fitBounds(bounds);
+
+        var markers = [];
+
+        map.on('click', function(e) {
+            var marker = L.marker(e.latlng).addTo(map);
+            var info = prompt('Enter information for this marker:');
+            markers.push({ lat: e.latlng.lat, lng: e.latlng.lng, info: info });
+            marker.bindPopup(`<p>${info}</p>`);
+        });
+
+        document.getElementById('exportBtn').addEventListener('click', function() {
+            var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(markers));
+            var downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", "markers.json");
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        });
+    </script>
+</body>
+</html>
