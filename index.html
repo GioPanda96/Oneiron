@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
+    <style>
+        .leaflet-control-custom {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 30px;
+            left: 10px;
+            min-width: 100px; /* Add a minimum width to prevent squishing */
+        }
+    </style>
 </head>
 <body>
     <div id="map" style="height: 100vh; width: 100vw;"></div>
@@ -19,20 +31,64 @@
         L.imageOverlay('Oneiron.jpg', bounds).addTo(map);
         map.fitBounds(bounds);
 
+        var markers = [];
+        var converter = new showdown.Converter();
+
         function addMarker(lat, lng, info) {
-            var marker = L.marker([lat, lng]).addTo(map);
-            marker.bindPopup(`<p>${info.replace(/\n/g, '<br>')}</p>`); // replace newline characters with <br>
+            var marker = L.marker([lat, lng]);
+            var htmlInfo = converter.makeHtml(info); // convert Markdown to HTML
+            marker.bindPopup(htmlInfo);
             marker.on('click', function() {
                 marker.openPopup();
             });
+            markers.push(marker);
+            marker.addTo(map);
         }
-        
+
         // Load markers from markers.json and add them to the map
         fetch('markers.json')
             .then(response => response.json())
             .then(data => {
                 data.forEach(markerData => addMarker(markerData.lat, markerData.lng, markerData.info));
             });
+
+        // Custom control for toggle markers
+        var ToggleControl = L.Control.extend({
+            options: {
+                position: 'bottomleft'
+            },
+
+            onAdd: function(map) {
+                var container = L.DomUtil.create('div', 'leaflet-control-custom');
+                var input = L.DomUtil.create('input', '', container);
+                var label = L.DomUtil.create('label', '', container);
+
+                input.type = 'checkbox';
+                input.checked = true;
+                input.id = 'toggleMarkers';
+                label.setAttribute('for', 'toggleMarkers');
+
+                L.DomEvent.on(input, 'change', function() {
+                    markers.forEach(marker => {
+                        if(input.checked) {
+                            marker.addTo(map);
+                        } else {
+                            marker.remove();
+                        }
+                    });
+                });
+                
+                L.DomEvent.disableClickPropagation(input); // This line is important to make the checkbox clickable
+
+                label.innerHTML = ' Show Markers';
+                container.appendChild(input);
+                container.appendChild(label);
+
+                return container;
+            }
+        });
+
+        map.addControl(new ToggleControl());
     </script>
 </body>
 </html>
