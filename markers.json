@@ -1,1 +1,57 @@
-[{"lat":1494.924054743679,"lng":4152,"info":"DZESTRA - CAPITALE DELLA PROVINCIA DI DZASTRA"},{"lat":1494.924054743679,"lng":4152,"info":""},{"lat":1987.3269311064716,"lng":4260,"info":"Derry, città portuale."},{"lat":1987.3269311064716,"lng":4260,"info":""},{"lat":2147.423428438877,"lng":5256,"info":"Orvo, una merda"},{"lat":2147.423428438877,"lng":5256,"info":"Test."},{"lat":3396.1761076316398,"lng":3428,"info":"Vediamo cosa succede"},{"lat":3396.1761076316398,"lng":3428,"info":"Se faccio questa cosa"}]
+[
+  {
+    "lat": 1494.924054743679,
+    "lng": 4152,
+    "info": "DZESTRA - CAPITALE DELLA PROVINCIA DI DZASTRA"
+  },
+  {
+    "lat": 1494.924054743679,
+    "lng": 4152,
+    "info": "Dzestra, capitale\n\nWow. Very cool"
+  },
+  {
+    "lat": 1987.3269311064716,
+    "lng": 4260,
+    "info": "Derry, città portuale."
+  },
+  {
+    "lat": 1987.3269311064716,
+    "lng": 4260,
+    "info": "Augh"
+  },
+  {
+    "lat": 2147.423428438877,
+    "lng": 5256,
+    "info": "Orvo, una merda"
+  },
+  {
+    "lat": 2147.423428438877,
+    "lng": 5256,
+    "info": "Test."
+  },
+  {
+    "lat": 3396.1761076316398,
+    "lng": 3428,
+    "info": "Vediamo cosa succede"
+  },
+  {
+    "lat": 3396.1761076316398,
+    "lng": 3428,
+    "info": "Personally, I like it a lot"
+  },
+  {
+    "lat": 2858.7841336116912,
+    "lng": 6040,
+    "info": "Example"
+  },
+  {
+    "lat": 2858.7841336116912,
+    "lng": 6040,
+    "info": "I'd like to see if this works \n as I hope it would"
+  },
+  {
+    "lat": 493.08336812804464,
+    "lng": 2784,
+    "info": "Ypnea, a very cool city\n\nPersonally I like it a lot"
+  }
+]
