@@ -1,27 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
-    <style>
-        .leaflet-control-custom {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 5px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 30px;
-            left: 10px;
-            min-width: 100px; /* Add a minimum width to prevent squishing */
-        }
-    </style>
+<style>
+    #menu {
+        background: rgba(255, 255, 255, 0.8);
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        border-radius: 5px;
+        width: 250px;
+        z-index: 1000; /* Add this line */
+    }
+    
+    #toggleButtons {
+        display: none;
+        margin-top: 5px;
+    }
+
+    .menu-button {
+        text-align: left; /* Align text to the left */
+        padding: 5px;
+        cursor: pointer;
+        border-bottom: 1px solid #ddd;
+        display: flex; /* Use flex layout */
+        align-items: center; /* Center items vertically */
+    }
+
+    .menu-button input[type="checkbox"] {
+        margin-right: 10px; /* Add some space between checkbox and label */
+    }
+
+    .menu-button:last-child {
+        border-bottom: none;
+    }
+</style>
 </head>
 <body>
     <div id="map" style="height: 100vh; width: 100vw;"></div>
+        <div id="menu">
+            <div id="legend" class="menu-button">Legend</div>
+            <div id="toggleButtons">
+                <div class="menu-button">
+                    <input type="checkbox" id="Capital" checked> Show Capitals
+                </div>
+                <div class="menu-button">
+                    <input type="checkbox" id="City" checked> Show Cities
+                </div>
+                <div class="menu-button">
+                    <input type="checkbox" id="Town" checked> Show Towns
+                </div>
+                <div class="menu-button">
+                    <input type="checkbox" id="Village" checked> Show Villages
+                </div>
+                <div class="menu-button">
+                    <input type="checkbox" id="Settlement" checked> Show Settlements
+                </div>
+                <div class="menu-button">
+                    <input type="checkbox" id="Passage" checked> Show Passages
+                </div>
+                <div class="menu-button">
+                    <input type="checkbox" id="Point of Interest" checked> Show Points of Interest
+                </div>
+            </div>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
+        // Icons
+        var icons = {
+            'Capital': new L.Icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+            }),
+            'City': new L.Icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [21, 34],
+                iconAnchor: [10, 34],
+                popupAnchor: [1, -28],
+                shadowSize: [34, 34]
+            }),
+            'Town': new L.Icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [19, 31],
+                iconAnchor: [9, 31],
+                popupAnchor: [1, -26],
+                shadowSize: [31, 31]
+            }),
+            'Village': new L.Icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [17, 28],
+                iconAnchor: [8, 28],
+                popupAnchor: [1, -24],
+                shadowSize: [28, 28]
+            }),
+            'Settlement': new L.Icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [15, 25],
+                iconAnchor: [7, 25],
+                popupAnchor: [1, -22],
+                shadowSize: [25, 25]
+            }),
+            'Passage': new L.Icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [13, 22],
+                iconAnchor: [6, 22],
+                popupAnchor: [1, -20],
+                shadowSize: [22, 22]
+            }),
+            'Point of Interest': new L.Icon({
+                iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-grey.png',
+                shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                iconSize: [11, 19],
+                iconAnchor: [5, 19],
+                popupAnchor: [1, -18],
+                shadowSize: [19, 19]
+            })
+        };
+
         var map = L.map('map', {
             crs: L.CRS.Simple,
             minZoom: -5,
@@ -31,17 +133,19 @@
         L.imageOverlay('Oneiron.jpg', bounds).addTo(map);
         map.fitBounds(bounds);
 
-        var markers = [];
+        var markers = {};
         var converter = new showdown.Converter();
 
-        function addMarker(lat, lng, info) {
-            var marker = L.marker([lat, lng]);
-            var htmlInfo = converter.makeHtml(info); // convert Markdown to HTML
+        function addMarker(lat, lng, info, type) {
+            var icon = icons[type];
+            var marker = L.marker([lat, lng], {icon: icon});
+            var htmlInfo = converter.makeHtml(info);
             marker.bindPopup(htmlInfo);
             marker.on('click', function() {
                 marker.openPopup();
             });
-            markers.push(marker);
+            if (!markers[type]) markers[type] = [];
+            markers[type].push(marker);
             marker.addTo(map);
         }
 
@@ -49,13 +153,17 @@
         fetch('markers.json')
             .then(response => response.json())
             .then(data => {
-                data.forEach(markerData => addMarker(markerData.lat, markerData.lng, markerData.info));
+                data.forEach(markerData => addMarker(markerData.lat, markerData.lng, markerData.info, markerData.type));
             });
 
         // Custom control for toggle markers
         var ToggleControl = L.Control.extend({
             options: {
                 position: 'bottomleft'
+            },
+
+            initialize: function (options) {
+                L.Util.setOptions(this, options);
             },
 
             onAdd: function(map) {
@@ -65,22 +173,22 @@
 
                 input.type = 'checkbox';
                 input.checked = true;
-                input.id = 'toggleMarkers';
-                label.setAttribute('for', 'toggleMarkers');
+                input.id = this.options.type;
+                label.setAttribute('for', this.options.type);
 
                 L.DomEvent.on(input, 'change', function() {
-                    markers.forEach(marker => {
+                    markers[this.options.type].forEach(marker => {
                         if(input.checked) {
                             marker.addTo(map);
                         } else {
                             marker.remove();
                         }
                     });
-                });
-                
-                L.DomEvent.disableClickPropagation(input); // This line is important to make the checkbox clickable
+                }, this);
 
-                label.innerHTML = ' Show Markers';
+                L.DomEvent.disableClickPropagation(input);
+
+                label.innerHTML = ' Show ' + this.options.type;
                 container.appendChild(input);
                 container.appendChild(label);
 
@@ -88,7 +196,26 @@
             }
         });
 
-        map.addControl(new ToggleControl());
+        document.getElementById('legend').onclick = function () {
+            var toggleButtons = document.getElementById('toggleButtons');
+            if (toggleButtons.style.display === 'none' || toggleButtons.style.display === '') {
+                toggleButtons.style.display = 'block';
+            } else {
+                toggleButtons.style.display = 'none';
+            }
+        }
+        document.querySelectorAll('#toggleButtons input[type="checkbox"]').forEach(input => {
+            input.addEventListener('change', function() {
+                var type = this.id;
+                markers[type].forEach(marker => {
+                    if(this.checked) {
+                        marker.addTo(map);
+                    } else {
+                        marker.remove();
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
