@@ -2,31 +2,43 @@
   {
     "lat": 1480,
     "lng": 4178,
-    "info": "# Dzestra\n\nCapitale della **Repubblica di Dzestra**, è una città costiera. Porto principale di tutta Oneiron, è anche uno dei **poli commerciali** più importanti del continente.\n\n È popolata **principalmente da umani**, ed è famosissima per la produzione e **vendita di castagne**."
+    "info": "# Dzestra\n\nCapitale della **Repubblica di Dzestra**, è una città costiera. Porto principale di tutta Oneiron, è anche uno dei **poli commerciali** più importanti del continente.\n\n È popolata **principalmente da umani**, ed è famosissima per la produzione e **vendita di castagne**.",
+    "type": "Capital"
   },
   {
     "lat": 500,
     "lng": 2794,
-    "info": "# Ypnèa\n\nCapitale del **Ducato di Ypnèa** è decisamente la grande **città dove la magia si addensa** maggiormente. Nell'ultimo secolo la città è stata meta per tanti studiosi della magia, in particolare **medici e curatori**.\n\nSi trova sulle rive del fiume assopito, che scorre verso l'oceano passando dalla Gran Palude."
+    "info": "# Ypnèa\n\nCapitale del **Ducato di Ypnèa** è decisamente la grande **città dove la magia si addensa** maggiormente. Nell'ultimo secolo la città è stata meta per tanti studiosi della magia, in particolare **medici e curatori**.\n\nSi trova sulle rive del fiume assopito, che scorre verso l'oceano passando dalla Gran Palude.",
+    "type": "Capital"
   },
   {
     "lat": 2424,
     "lng": 1928,
-    "info": "# Ottavia"
+    "info": "# Ottavia",
+    "type": "Capital"
   },
   {
     "lat": 3876,
     "lng": 3184,
-    "info": "#Lak'Shasar"
+    "info": "#Lak'Shasar",
+    "type": "Capital"
   },
   {
     "lat": 4784,
     "lng": 6276,
-    "info": "# Telluria"
+    "info": "# Telluria",
+    "type": "Capital"
   },
   {
     "lat": 1384,
     "lng": 6438,
-    "info": "# Penumbra"
+    "info": "# Penumbra",
+    "type": "Capital"
+  },
+  {
+    "lat": 758,
+    "lng": 4742,
+    "info": "## Porto Asciutto\n\nUna piccola ma fondamentale **città portuale** nella *Provincia di Dzestra*.",
+    "type": "City"
   }
 ]
