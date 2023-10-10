@@ -1,37 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oneiron Interactive Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-<style>
-    #menu {
-        background: rgba(255, 255, 255, 0.8);
-        position: absolute;
-        bottom: 10px;
-        left: 10px;
-        border-radius: 5px;
-        width: 250px;
-        z-index: 1000; /* Add this line */
-    }
-    
-    #toggleButtons {
-        display: none;
-        margin-top: 5px;
-    }
+    <style>
+        #menu {
+            background: rgba(255, 255, 255, 0.8);
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            border-radius: 5px;
+            width: 250px;
+            z-index: 1000; /* Add this line */
+        }
+        
+        #toggleButtons {
+            display: none;
+            margin-top: 5px;
+        }
 
-    .menu-button {
-        text-align: left; /* Align text to the left */
-        padding: 5px;
-        cursor: pointer;
-        border-bottom: 1px solid #ddd;
-        display: flex; /* Use flex layout */
-        align-items: center; /* Center items vertically */
-    }
+        .menu-button {
+            text-align: left; /* Align text to the left */
+            padding: 5px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            display: flex; /* Use flex layout */
+            align-items: center; /* Center items vertically */
+        }
 
-    .menu-button input[type="checkbox"] {
-        margin-right: 10px; /* Add some space between checkbox and label */
-    }
+        .menu-button input[type="checkbox"] {
+            margin-right: 10px; /* Add some space between checkbox and label */
+        }
 
-    .menu-button:last-child {
-        border-bottom: none;
-    }
-</style>
+        .menu-button:last-child {
+            border-bottom: none;
+        }
+    </style>
 </head>
 <body>
     <div id="map" style="height: 100vh; width: 100vw;"></div>
