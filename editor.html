@@ -100,13 +100,14 @@
     var markers = [];
 
     // Load existing markers from markers.json
-    fetch('markers.json')
+    fetch('markers.json?v=' + new Date().getTime()) // Add timestamp to prevent caching
         .then(response => response.json())
         .then(data => {
             data.forEach(markerData => {
                 addMarker(markerData.lat, markerData.lng, markerData.info, markerData.type);
             });
-        });
+        })
+        .catch(error => console.error('Error loading markers:', error));
 
     function addMarker(lat, lng, info, type) {
         var marker = L.marker([lat, lng], {icon: icons[type]}).addTo(map);
