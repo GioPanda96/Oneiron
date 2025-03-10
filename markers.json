@@ -8,7 +8,7 @@
   {
     "lat": 500,
     "lng": 2794,
-    "info": "# Ypnèa\n\nCapitale del **Ducato di Ypnèa** è decisamente la grande **città dove la magia si addensa** maggiormente. Nell'ultimo secolo la città è stata meta per tanti studiosi della magia, in particolare **medici e curatori**.\n\nSi trova sulle rive del fiume assopito, che scorre verso l'oceano passando dalla Gran Palude.",
+    "info": "# Ypnèa\n\nCapitale del **Ducato di Ypnèa** è decisamente la grande **città dove la magia si addensa** maggiormente. Nell'ultimo secolo la città è stata meta per tanti studiosi della magia, in particolare **medici e curatori**.\n\nSi trova sulle rive del fiume assopito, che scorre verso l'oceano passando dalla Gran Palude.\n\n## Note di Viaggio\nIl bardo **Palmira** e il suo manager **Tullio** si stanno dirigendo lì. \nPalmira è un'elfa bardo, specializzata nel violino e esperta nelle **ninne nanne**. Tullio è un tiefling con un'ampia conoscenza sulla musica e la poesia. Ha sentito parlare di Doran, ma solo in storie e poesie.",
     "type": "Capital"
   },
   {
@@ -26,7 +26,7 @@
   {
     "lat": 4784,
     "lng": 6276,
-    "info": "# Telluria",
+    "info": "# Telluria\n\n## Note di Viaggio\nGran parte dei passeggeri della nave con cui gli avventurieri sono arrivati ad Oneiron sono in viaggio per le miniere di Telluria, con un visto lavorativo limitato.",
     "type": "Capital"
   },
   {
@@ -38,7 +38,7 @@
   {
     "lat": 758,
     "lng": 4742,
-    "info": "## Porto Asciutto\n\nUna piccola ma fondamentale **città portuale** nella *Provincia di Dzestra*.\nPrima della Breccia, Porto Asciutto era un semplice villaggio, noto principalmente per la **caccia alle balene**, che trovano nello sbocco a sud del Mar della Serpe il loro habitat ideale.\nNotabili in Porto Asciutto sono i **prodotti derivati dalla lavorazione del grasso, organi e ossa di balena**, nonché la cucina tradizionale, altrettanto basata sui cetacei. Particolare anche il culto di una divinità locale, **Gromen**, o \"**Il Grande Squalo**\".\n\nDa 200 anni a questa parte, con l'invenzione della navigazione intercontinentale, Porto Asciutto ha avuto una **rapida crescita**, sia economica che di popolazione ed è diventato un importante porto di immigrazione \"low cost\" rispetto agli approdi a Dzestra.\nDa allora la classe dirigente, prima composta principalmente da consorzi e gilde di baleniere, si è mutata in **commercianti e navigatori internazionali**.",
+    "info": "## Porto Asciutto\n\nUna piccola ma fondamentale **città portuale** nella *Provincia di Dzestra*.\nPrima della Breccia, Porto Asciutto era un semplice villaggio, noto principalmente per la **caccia alle balene**, che trovano nello sbocco a sud del Mar della Serpe il loro habitat ideale.\nNotabili in Porto Asciutto sono i **prodotti derivati dalla lavorazione del grasso, organi e ossa di balena**, nonché la cucina tradizionale, altrettanto basata sui cetacei. Particolare anche il culto di una divinità locale, **Gromen**, o \"**Il Grande Squalo**\".\n\nDa 150 anni a questa parte, con l'invenzione della navigazione intercontinentale, Porto Asciutto ha avuto una **rapida crescita**, sia economica che di popolazione ed è diventato un importante porto di immigrazione \"low cost\" rispetto agli approdi a Dzestra.\nDa allora la classe dirigente, prima composta principalmente da consorzi e gilde di baleniere, si è mutata in **commercianti e navigatori internazionali**.\n\n## Note di Viaggio\nIl party ha dovuto pagare una cifra considerevole per ricevere il visto. Alston è stato interrogato a lungo al controllo della frontiera, probabilmente a causa della sua razza.\n\nDurante le celebrazioni di Gromen, **un gruppo di koboldi** ha attaccato.",
     "type": "City"
   },
   {
